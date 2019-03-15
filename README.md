@@ -2,17 +2,20 @@
 
 Interact with [Google Firebase](https://firebase.google.com) from your PHP application.
 
-[![Current version](https://img.shields.io/packagist/v/kreait/firebase-php.svg)](https://packagist.org/packages/kreait/firebase-php)
-[![Supported PHP version](https://img.shields.io/packagist/php-v/kreait/firebase-php.svg)]()
-[![Total Downloads](https://img.shields.io/packagist/dt/kreait/firebase-php.svg)](https://packagist.org/packages/kreait/firebase-php/stats)
-[![Gitter](https://badges.gitter.im/kreait/firebase-php.svg)](https://gitter.im/kreait/firebase-php)
-
 [![Build Status](https://travis-ci.org/kreait/firebase-php.svg?branch=5.0)](https://travis-ci.org/kreait/firebase-php)
+[![Current version](https://img.shields.io/badge/packagist-5.0%40dev-informational.svg)](https://packagist.org/packages/kreait/firebase-php#5.0.x-dev)
+![Supported PHP version](https://img.shields.io/badge/php-%5E7.2-informational.svg)<!--
+![Monthly Downloads](https://img.shields.io/packagist/dm/kreait/firebase-php.svg)
+--> ![Gitter](https://img.shields.io/gitter/room/kreait/firebase-php.svg)
+
+<!--[![Build Status](https://travis-ci.org/kreait/firebase-php.svg?branch=5.0)](https://travis-ci.org/kreait/firebase-php)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=coverage)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)
+-->
 
+<!--
 ## Resources
 
 - [Documentation](https://firebase-php.readthedocs.io/)
@@ -43,6 +46,7 @@ Interact with [Google Firebase](https://firebase.google.com) from your PHP appli
 > The following projects provide support for Firestore without the need to install the `grpc` PHP extension:
 > - [ahsankhatri/firestore-php](https://github.com/ahsankhatri/firestore-php)
 > - [morrislaptop/firestore-php](https://github.com/morrislaptop/firestore-php)
+-->
 
 ## Versions
 
