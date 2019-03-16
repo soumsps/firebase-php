@@ -7,7 +7,7 @@ Interact with [Google Firebase](https://firebase.google.com) from your PHP appli
 [![Total Downloads](https://img.shields.io/packagist/dt/kreait/firebase-php.svg)](https://packagist.org/packages/kreait/firebase-php/stats)
 [![Gitter](https://badges.gitter.im/kreait/firebase-php.svg)](https://gitter.im/kreait/firebase-php)
 
-[![Build Status](https://travis-ci.org/kreait/firebase-php.svg?branch=master)](https://travis-ci.org/kreait/firebase-php)
+[![Build Status](https://travis-ci.org/kreait/firebase-php.svg?branch=5.0)](https://travis-ci.org/kreait/firebase-php)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-php&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=kreait_firebase-php)

@@ -4,6 +4,9 @@ addons:
   sonarcloud:
     organization: "kreait"
 
+git:
+  depth: false
+
 env:
   global:
     - ALL_TESTS=0
@@ -13,16 +16,8 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
-      git:
-        depth: false
+    - php: 7.2
       env: ALL_TESTS=1
-    - php: 7.1
-      env: UNIT_TESTS=1
-    - php: 7.2
-      env: UNIT_TESTS=1
-    - php: 7.2
-      env: STATIC_ANALYSIS=1
     - php: 7.3
       env: UNIT_TESTS=1 COMPOSER_FLAGS=--ignore-platform-reqs # php-cs-fixer does not yet support PHP 7.3
 

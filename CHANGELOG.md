@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Unreleased
+
+* Bumped the minimum PHP version requirement to PHP 7.2
+
 ## 4.20.0 - 2019-03-28
 
 * Sent emails can now be localized by providing a `$locale` parameter to the following methods:

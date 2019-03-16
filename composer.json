@@ -16,9 +16,7 @@
         "source": "https://github.com/kreait/firebase-php"
     },
     "require": {
-        "php": "^7.0",
-        "ext-ctype": "*",
-        "ext-json": "*",
+        "php": "^7.2",
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "giggsey/libphonenumber-for-php": "^8.9",
