@@ -55,21 +55,6 @@ class ApiClient
     }
 
     /**
-     * @deprecated 4.2.0
-     * @see ApiClient::createUser()
-     *
-     * @codeCoverageIgnore
-     */
-    public function signupNewUser(string $email = null, string $password = null): ResponseInterface
-    {
-        return $this->createUser(
-            Request\CreateUser::new()
-                ->withUnverifiedEmail($email)
-                ->withClearTextPassword($password)
-        );
-    }
-
-    /**
      * Returns a user for the given email address.
      *
      * @param string $email
@@ -109,71 +94,11 @@ class ApiClient
         ]));
     }
 
-    /**
-     * @deprecated 4.2.0
-     * @see ApiClient::updateUser()
-     *
-     * @codeCoverageIgnore
-     */
-    public function enableUser($uid): ResponseInterface
-    {
-        return $this->updateUser(
-            Request\UpdateUser::new()
-                ->withUid($uid)
-                ->markAsEnabled()
-        );
-    }
-
-    /**
-     * @deprecated 4.2.0
-     * @see ApiClient::updateUser()
-     *
-     * @codeCoverageIgnore
-     */
-    public function disableUser($uid): ResponseInterface
-    {
-        return $this->updateUser(
-            Request\UpdateUser::new()
-                ->withUid($uid)
-                ->markAsDisabled()
-        );
-    }
-
     public function deleteUser(string $uid): ResponseInterface
     {
         return $this->request('deleteAccount', [
             'localId' => $uid,
         ]);
-    }
-
-    /**
-     * @deprecated 4.2.0
-     * @see ApiClient::updateUser()
-     *
-     * @codeCoverageIgnore
-     */
-    public function changeUserPassword(string $uid, string $newPassword): ResponseInterface
-    {
-        return $this->updateUser(
-            Request\UpdateUser::new()
-                ->withUid($uid)
-                ->withClearTextPassword($newPassword)
-        );
-    }
-
-    /**
-     * @deprecated 4.2.0
-     * @see ApiClient::updateUser()
-     *
-     * @codeCoverageIgnore
-     */
-    public function changeUserEmail(string $uid, string $newEmail): ResponseInterface
-    {
-        return $this->updateUser(
-            Request\UpdateUser::new()
-                ->withUid($uid)
-                ->withEmail($newEmail)
-        );
     }
 
     public function getAccountInfo(string $uid): ResponseInterface

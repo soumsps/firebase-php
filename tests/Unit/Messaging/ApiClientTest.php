@@ -16,7 +16,7 @@ use Kreait\Firebase\Exception\Messaging\ServerUnavailable;
 use Kreait\Firebase\Exception\Messaging\UnknownError;
 use Kreait\Firebase\Exception\MessagingException;
 use Kreait\Firebase\Messaging\ApiClient;
-use Kreait\Firebase\Messaging\MessageToTopic;
+use Kreait\Firebase\Messaging\CloudMessage;
 use PHPUnit\Framework\TestCase;
 
 class ApiClientTest extends TestCase
@@ -55,7 +55,7 @@ class ApiClientTest extends TestCase
             ->willThrowException($requestException);
 
         try {
-            $this->client->sendMessage(MessageToTopic::create('a-topic'));
+            $this->client->sendMessage(CloudMessage::withTarget('topic', 'foo'));
         } catch (\Throwable $e) {
             $this->assertInstanceOf(MessagingException::class, $e);
             $this->assertInstanceOf($expectedClass, $e);
@@ -70,7 +70,7 @@ class ApiClientTest extends TestCase
 
         $this->expectException(MessagingException::class);
 
-        $this->client->sendMessage(MessageToTopic::create('a-topic'));
+        $this->client->sendMessage(CloudMessage::withTarget('topic', 'foo'));
     }
 
     public function requestExceptions(): array

@@ -8,6 +8,10 @@
   not meant to be instantiated directly. In order to be able to change the internals of the classes without breaking
   them for others, the following components are not directly instatiable anymore: `Kreait\Firebase\Auth`, 
   `Kreait\Firebase\Database`, `Kreait\Firebase\Messaging`, `Kreait\Firebase\RemoteConfig`, `Kreait\Firebase\Storage`
+* Removed depreacted classes:
+  * `Kreait\Firebase\Messaging\ConditionalMessage`, use `Kreait\Firebase\CloudMessage`
+  * `Kreait\Firebase\Messaging\MessageToRegistrationToken`, use `Kreait\Firebase\CloudMessage`
+  * `Kreait\Firebase\Messaging\MessageToTopic`, use `Kreait\Firebase\CloudMessage`
 
 ## 4.20.0 - 2019-03-28
 

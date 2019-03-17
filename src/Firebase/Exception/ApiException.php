@@ -32,7 +32,7 @@ class ApiException extends \RuntimeException implements FirebaseException
     {
         $request = $e->getRequest();
         $response = $e->getResponse();
-        $message = self::getPreciseMessage($response, $default = $e->getMessage());
+        $message = self::getPreciseMessage($response, $e->getMessage());
         $code = $e->getCode();
 
         $class = self::getTargetClassFromStatusCode($code);
