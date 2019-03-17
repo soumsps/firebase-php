@@ -17,7 +17,7 @@ class StorageTest extends IntegrationTestCase
      */
     private $storage;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->storage = self::$firebase->getStorage();
     }

@@ -19,7 +19,7 @@ class ServiceAccountTest extends UnitTestCase
      */
     private $serviceAccount;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->validJsonFile = self::$fixturesDir.'/ServiceAccount/valid.json';
         $this->malformedJsonFile = self::$fixturesDir.'/ServiceAccount/malformed.json';
@@ -32,7 +32,7 @@ class ServiceAccountTest extends UnitTestCase
         $this->serviceAccount = ServiceAccount::fromValue($this->validJsonFile);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         @chmod($this->unreadableJsonFile, 0644);
     }

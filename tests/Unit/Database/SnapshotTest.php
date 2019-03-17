@@ -28,7 +28,7 @@ class SnapshotTest extends UnitTestCase
      */
     private $snapshotWithEmptyValue;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->reference = $this->createMock(Reference::class);
 

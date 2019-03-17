@@ -36,7 +36,7 @@ class QueryTest extends UnitTestCase
      */
     protected $query;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->uri = new Uri('http://domain.tld/some/path');
 

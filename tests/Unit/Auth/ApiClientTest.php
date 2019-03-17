@@ -24,7 +24,7 @@ class ApiClientTest extends UnitTestCase
      */
     private $client;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->http = $this->createMock(ClientInterface::class);
         $this->client = new ApiClient($this->http);

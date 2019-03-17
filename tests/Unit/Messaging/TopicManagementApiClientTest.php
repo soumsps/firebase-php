@@ -24,7 +24,7 @@ class TopicManagementApiClientTest extends TestCase
      */
     private $sut;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client = $this->prophesize(ClientInterface::class);
         $this->sut = new TopicManagementApiClient($this->client->reveal());

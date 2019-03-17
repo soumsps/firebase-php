@@ -20,7 +20,7 @@ abstract class MessageTestCase extends IntegrationTestCase
      */
     public $fullMessageData;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->messaging = self::$firebase->getMessaging();
 

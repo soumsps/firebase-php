@@ -21,7 +21,7 @@ class CustomTokenViaGoogleIamTest extends IntegrationTestCase
      */
     private $auth;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->generator = new CustomTokenViaGoogleIam(
             self::$serviceAccount->getClientEmail(),

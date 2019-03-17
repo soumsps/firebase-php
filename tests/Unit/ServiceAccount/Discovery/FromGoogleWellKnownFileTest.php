@@ -11,12 +11,12 @@ class FromGoogleWellKnownFileTest extends UnitTestCase
 {
     private $backup;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->backup = getenv('HOME');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         putenv(sprintf('%s=%s', 'HOME', $this->backup));
     }

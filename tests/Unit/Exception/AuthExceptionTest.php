@@ -16,7 +16,7 @@ class AuthExceptionTest extends UnitTestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = $this->createMock(RequestInterface::class);
     }

@@ -29,7 +29,7 @@ class ReferenceTest extends UnitTestCase
      */
     private $reference;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

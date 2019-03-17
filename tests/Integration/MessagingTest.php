@@ -15,7 +15,7 @@ class MessagingTest extends IntegrationTestCase
      */
     public $messaging;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->messaging = self::$firebase->getMessaging();
     }

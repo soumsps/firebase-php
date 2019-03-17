@@ -27,7 +27,7 @@ class MessagingTest extends UnitTestCase
      */
     private $topicManagementApi;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->messagingApi = $this->createMock(ApiClient::class);
         $this->topicManagementApi = $this->createMock(TopicManagementApiClient::class);

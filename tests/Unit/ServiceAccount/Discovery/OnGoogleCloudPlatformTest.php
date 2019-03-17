@@ -16,7 +16,7 @@ class OnGoogleCloudPlatformTest extends TestCase
      */
     private $metadata;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->metadata = $this->prophesize(GcpMetadata::class);
     }

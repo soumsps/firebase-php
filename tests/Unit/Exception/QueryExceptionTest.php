@@ -20,7 +20,7 @@ class QueryExceptionTest extends UnitTestCase
      */
     private $exception;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->query = $this->createMock(Query::class);
         $this->exception = new QueryException($this->query);

@@ -34,7 +34,7 @@ class AuthTest extends UnitTestCase
      */
     private $auth;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->tokenGenerator = $this->createMock(Generator::class);
         $this->idTokenVerifier = $this->createMock(Verifier::class);

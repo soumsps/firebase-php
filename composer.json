@@ -31,7 +31,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.0",
         "phpstan/phpstan-phpunit": "^0.11",
-        "phpunit/phpunit": "^6.0|^7.0",
+        "phpunit/phpunit": "^8.0",
         "symfony/var-dumper": "^4.2.4"
     },
     "autoload": {

@@ -14,7 +14,7 @@ class ReferenceTest extends DatabaseTestCase
      */
     private $ref;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->ref = self::$db->getReference(self::$refPrefix);
     }
@@ -85,7 +85,7 @@ class ReferenceTest extends DatabaseTestCase
         $ref = $this->ref->getChild(__FUNCTION__);
         $key = $ref->push()->getKey();
 
-        $this->assertInternalType('string', $key);
+        $this->assertIsString($key);
         $this->assertSame(0, $ref->getSnapshot()->numChildren());
     }
 

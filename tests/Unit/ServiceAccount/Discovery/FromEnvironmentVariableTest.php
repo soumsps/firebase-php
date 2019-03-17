@@ -13,12 +13,12 @@ class FromEnvironmentVariableTest extends UnitTestCase
      */
     private $envVarName;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->envVarName = 'FIREBASE_FROM_ENV_VAR_TEST';
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         putenv($this->envVarName);
     }
