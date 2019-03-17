@@ -3,6 +3,7 @@
 namespace Kreait\Firebase\Tests;
 
 use Kreait\Firebase\ServiceAccount;
+use ReflectionClass;
 
 abstract class UnitTestCase extends FirebaseTestCase
 {
@@ -44,5 +45,16 @@ npI3CJzFaivN28EWmBJI4/pJtTATlNsKfLxCKUvCJ55k
 -----END RSA PRIVATE KEY-----');
 
         return $mock;
+    }
+
+    protected function instantiate(string $class, ...$arguments)
+    {
+        $rc = new ReflectionClass($class);
+        $constructor = $rc->getConstructor();
+        $constructor->setAccessible(true);
+        $instance = $rc->newInstanceWithoutConstructor();
+        $constructor->invoke($instance, ...$arguments);
+
+        return $instance;
     }
 }

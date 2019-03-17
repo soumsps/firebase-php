@@ -32,7 +32,7 @@ class Storage
      */
     private $filesystems = [];
 
-    public function __construct(StorageClient $storageClient, string $defaultBucket)
+    private function __construct(StorageClient $storageClient, string $defaultBucket)
     {
         $this->storageClient = $storageClient;
         $this->defaultBucket = $defaultBucket;

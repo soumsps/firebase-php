@@ -36,7 +36,7 @@ class Database
      * @param UriInterface $uri
      * @param ApiClient $client
      */
-    public function __construct(UriInterface $uri, ApiClient $client)
+    private function __construct(UriInterface $uri, ApiClient $client)
     {
         $this->uri = $uri;
         $this->client = $client;

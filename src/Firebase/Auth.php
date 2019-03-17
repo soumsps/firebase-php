@@ -41,7 +41,7 @@ class Auth
      */
     private $idTokenVerifier;
 
-    public function __construct(ApiClient $client, TokenGenerator $customToken, IdTokenVerifier $idTokenVerifier)
+    private function __construct(ApiClient $client, TokenGenerator $customToken, IdTokenVerifier $idTokenVerifier)
     {
         $this->client = $client;
         $this->tokenGenerator = $customToken;

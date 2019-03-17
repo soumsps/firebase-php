@@ -32,7 +32,7 @@ class MessagingTest extends UnitTestCase
         $this->messagingApi = $this->createMock(ApiClient::class);
         $this->topicManagementApi = $this->createMock(TopicManagementApiClient::class);
 
-        $this->messaging = new Messaging($this->messagingApi, $this->topicManagementApi);
+        $this->messaging = $this->instantiate(Messaging::class, $this->messagingApi, $this->topicManagementApi);
     }
 
     public function testSendInvalidObject()

@@ -22,6 +22,7 @@ use Kreait\Firebase\Http\Middleware;
 use Kreait\Firebase\ServiceAccount\Discoverer;
 use Kreait\GcpMetadata;
 use Psr\Http\Message\UriInterface;
+use ReflectionClass;
 
 class Factory
 {
@@ -158,7 +159,7 @@ class Factory
         $remoteConfig = $this->createRemoteConfig();
         $messaging = $this->createMessaging();
 
-        return new Firebase($database, $auth, $storage, $remoteConfig, $messaging);
+        return $this->instantiate(Firebase::class, $database, $auth, $storage, $remoteConfig, $messaging);
     }
 
     protected function getServiceAccountDiscoverer(): Discoverer
@@ -206,7 +207,7 @@ class Factory
         $keyStore = new HttpKeyStore(new Client(), $this->verifierCache ?: new InMemoryCache());
         $verifier = new Verifier($this->getServiceAccount()->getSanitizedProjectId(), $keyStore);
 
-        return new Auth($apiClient, $customTokenGenerator, $verifier);
+        return $this->instantiate(Auth::class, $apiClient, $customTokenGenerator, $verifier);
     }
 
     public function createCustomTokenGenerator(): Generator
@@ -243,7 +244,7 @@ class Factory
             $handler->push($middleware, $name);
         }
 
-        return new Database($this->getDatabaseUri(), new Database\ApiClient($http));
+        return $this->instantiate(Database::class, $this->getDatabaseUri(), new Database\ApiClient($http));
     }
 
     protected function createRemoteConfig(): RemoteConfig
@@ -252,7 +253,7 @@ class Factory
             'base_uri' => 'https://firebaseremoteconfig.googleapis.com/v1/projects/'.$this->getServiceAccount()->getSanitizedProjectId().'/remoteConfig',
         ]);
 
-        return new RemoteConfig(new RemoteConfig\ApiClient($http));
+        return $this->instantiate(RemoteConfig::class, new RemoteConfig\ApiClient($http));
     }
 
     protected function createMessaging(): Messaging
@@ -275,7 +276,7 @@ class Factory
             ])
         );
 
-        return new Messaging($messagingApiClient, $topicManagementApiClient);
+        return $this->instantiate(Messaging::class, $messagingApiClient, $topicManagementApiClient);
     }
 
     public function createApiClient(array $config = null, array $additionalScopes = null): Client
@@ -339,7 +340,7 @@ class Factory
             'projectId' => $this->getServiceAccount()->getSanitizedProjectId(),
         ]);
 
-        return new Storage($storageClient, $this->getStorageBucketName());
+        return $this->instantiate(Storage::class, $storageClient, $this->getStorageBucketName());
     }
 
     protected function getGoogleCloudServiceBuilder(): ServiceBuilder
@@ -362,5 +363,21 @@ class Factory
         }
 
         return new ServiceBuilder($config);
+    }
+
+    private function instantiate(string $class, ...$arguments)
+    {
+        $rc = new ReflectionClass($class);
+        $constructor = $rc->getConstructor();
+
+        if (!$constructor) {
+            return $rc->newInstanceWithoutConstructor();
+        }
+
+        $constructor->setAccessible(true);
+        $instance = $rc->newInstanceWithoutConstructor();
+        $constructor->invoke($instance, ...$arguments);
+
+        return $instance;
     }
 }

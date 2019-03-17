@@ -32,7 +32,7 @@ class DatabaseTest extends UnitTestCase
         $this->uri = new Uri('https://database-uri.tld');
         $this->apiClient = $this->createMock(ApiClient::class);
 
-        $this->database = new Database($this->uri, $this->apiClient);
+        $this->database = $this->instantiate(Database::class, $this->uri, $this->apiClient);
     }
 
     public function testGetReference()

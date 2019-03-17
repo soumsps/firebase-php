@@ -4,6 +4,10 @@
 
 * Bumped the minimum PHP version requirement to PHP 7.2
 * Increased PHPStan's strictness to maximum level and fixed newly discovered issues
+* All main components were already supposed to be retrieved only through an instance of `Kreait\Firebase`, and were
+  not meant to be instantiated directly. In order to be able to change the internals of the classes without breaking
+  them for others, the following components are not directly instatiable anymore: `Kreait\Firebase\Auth`, 
+  `Kreait\Firebase\Database`, `Kreait\Firebase\Messaging`, `Kreait\Firebase\RemoteConfig`, `Kreait\Firebase\Storage`
 
 ## 4.20.0 - 2019-03-28
 

@@ -39,7 +39,7 @@ class AuthTest extends UnitTestCase
         $this->tokenGenerator = $this->createMock(Generator::class);
         $this->idTokenVerifier = $this->createMock(Verifier::class);
         $this->apiClient = $this->createMock(ApiClient::class);
-        $this->auth = new Auth($this->apiClient, $this->tokenGenerator, $this->idTokenVerifier);
+        $this->auth = $this->instantiate(Auth::class, $this->apiClient, $this->tokenGenerator, $this->idTokenVerifier);
     }
 
     public function testGetApiClient()

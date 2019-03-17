@@ -28,7 +28,7 @@ class Messaging
      */
     private $topicManagementApi;
 
-    public function __construct(ApiClient $messagingApiClient, TopicManagementApiClient $topicManagementApiClient)
+    private function __construct(ApiClient $messagingApiClient, TopicManagementApiClient $topicManagementApiClient)
     {
         $this->messagingApi = $messagingApiClient;
         $this->topicManagementApi = $topicManagementApiClient;
