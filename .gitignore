@@ -4,6 +4,7 @@
 /docs/*.pyc
 /tests/_fixtures/test_*
 
+/.php_cs
 /.php_cs.cache
 /cc-test-reporter
 /composer.lock
