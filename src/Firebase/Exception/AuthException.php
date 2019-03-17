@@ -40,8 +40,9 @@ class AuthException extends \RuntimeException implements FirebaseException
     public static function fromRequestException(RequestException $e): self
     {
         $message = $e->getMessage();
+        $response = $e->getResponse();
 
-        if ($e->getResponse() && JSON::isValid($responseBody = (string) $e->getResponse()->getBody())) {
+        if ($response && JSON::isValid($responseBody = (string) $response->getBody())) {
             $errors = JSON::decode($responseBody, true);
             $message = $errors['error']['message'] ?? $message;
         }

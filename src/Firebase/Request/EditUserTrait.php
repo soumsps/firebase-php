@@ -69,7 +69,9 @@ trait EditUserTrait
     protected static function withEditableProperties($request, array $properties)
     {
         foreach ($properties as $key => $value) {
-            switch (strtolower(preg_replace('/[^a-z]/i', '', $key))) {
+            $normalizedKey = strtolower((string) preg_replace('/[^a-z]/i', '', $key));
+
+            switch ($normalizedKey) {
                 case 'uid':
                 case 'localid':
                     $request = $request->withUid($value);
@@ -123,6 +125,8 @@ trait EditUserTrait
                 case 'cleartextpassword':
                     $request = $request->withClearTextPassword($value);
                     break;
+                default:
+                    break;
             }
         }
 
@@ -156,28 +160,28 @@ trait EditUserTrait
     }
 
     /**
-     * @param Email|string $email
+     * @param Email|string|null $email
      *
      * @return static
      */
     public function withVerifiedEmail($email)
     {
         $request = clone $this;
-        $request->email = $email instanceof Email ? $email : new Email($email);
+        $request->email = $email instanceof Email ? $email : new Email((string) $email);
         $request->emailIsVerified = true;
 
         return $request;
     }
 
     /**
-     * @param Email|string $email
+     * @param Email|string|null $email
      *
      * @return static
      */
     public function withUnverifiedEmail($email)
     {
         $request = clone $this;
-        $request->email = $email instanceof Email ? $email : new Email($email);
+        $request->email = $email instanceof Email ? $email : new Email((string) $email);
         $request->emailIsVerified = false;
 
         return $request;
@@ -203,14 +207,8 @@ trait EditUserTrait
      */
     public function withPhoneNumber($phoneNumber)
     {
-        if ($phoneNumber) {
-            $phoneNumber = $phoneNumber instanceof PhoneNumber
-                ? $phoneNumber
-                : new PhoneNumber($phoneNumber)
-            ;
-        }
         $request = clone $this;
-        $request->phoneNumber = $phoneNumber;
+        $request->phoneNumber = is_string($phoneNumber) ? new PhoneNumber($phoneNumber) : $phoneNumber;
 
         return $request;
     }

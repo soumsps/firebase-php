@@ -48,7 +48,8 @@ final class UpdateUser implements Request
         $request = self::withEditableProperties(new self(), $properties);
 
         foreach ($properties as $key => $value) {
-            switch (strtolower(preg_replace('/[^a-z]/i', '', $key))) {
+            $normalizedKey = strtolower((string) preg_replace('/[^a-z]/i', '', $key));
+            switch ($normalizedKey) {
                 case 'deletephoto':
                 case 'deletephotourl':
                 case 'removephoto':
@@ -63,13 +64,16 @@ final class UpdateUser implements Request
                 case 'deleteattribute':
                 case 'deleteattributes':
                     foreach ((array) $value as $deleteAttribute) {
-                        switch (strtolower(preg_replace('/[^a-z]/i', '', $deleteAttribute))) {
+                        $normalizedDeleteAttribute = strtolower((string) preg_replace('/[^a-z]/i', '', (string) $deleteAttribute));
+                        switch ($normalizedDeleteAttribute) {
                             case 'displayname':
                                 $request = $request->withRemovedDisplayName();
                                 break;
                             case 'photo':
                             case 'photourl':
                                 $request = $request->withRemovedPhotoUrl();
+                                break;
+                            default:
                                 break;
                         }
                     }
@@ -97,6 +101,8 @@ final class UpdateUser implements Request
                     $request = array_reduce((array) $value, function (self $request, $provider) {
                         return $request->withRemovedProvider($provider);
                     }, $request);
+                    break;
+                default:
                     break;
             }
         }

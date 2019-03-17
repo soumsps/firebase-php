@@ -1,9 +1,9 @@
 .DEFAULT_GOAL:= help
-.PHONY: tests coverage view-coverage cs docs view-docs tag
+.PHONY: test coverage view-coverage cs docs view-docs tag
 
-tests: ## Executes the test suites
+test: ## Executes the test suites
 	@vendor/bin/phpunit --testsuite unit
-	@vendor/bin/phpstan analyse src -c phpstan.neon --level=6 --no-progress -vvv
+	@vendor/bin/phpstan analyse --no-progress
 
 integration-tests: ## Executes the integration test suite
 	@vendor/bin/phpunit --testsuite integration

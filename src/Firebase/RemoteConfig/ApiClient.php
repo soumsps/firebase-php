@@ -54,8 +54,11 @@ class ApiClient
     {
         $uri = rtrim((string) $this->client->getConfig('base_uri'), '/').':listVersions';
 
-        $since = $query->since() ? $query->since()->format('Y-m-d\TH:i:s.v\Z') : null;
-        $until = $query->until() ? $query->until()->format('Y-m-d\TH:i:s.v\Z') : null;
+        $since = $query->since();
+        $until = $query->until();
+
+        $since = $since ? $since->format('Y-m-d\TH:i:s.v\Z') : null;
+        $until = $until ? $until->format('Y-m-d\TH:i:s.v\Z') : null;
         $upToVersion = $query->upToVersion() ? (string) $query->upToVersion() : null;
 
         return $this->request('GET', $uri, array_filter([

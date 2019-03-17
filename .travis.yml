@@ -29,6 +29,6 @@ install:
   - composer update $COMPOSER_FLAGS --no-interaction --no-suggest --no-progress
 
 script:
-  - vendor/bin/phpstan analyse src -c phpstan.neon --level=6 --no-progress -vvv
+  - vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress
   - vendor/bin/phpunit --coverage-clover=coverage-report.clover --log-junit=test-report.xml
   - sonar-scanner

@@ -96,9 +96,10 @@ class Parameter implements \JsonSerializable
     {
         reset($data);
         $parameterData = current($data);
+        $parameterName = (string) key($data);
 
         $parameter = new self();
-        $parameter->name = key($data);
+        $parameter->name = $parameterName;
         $parameter->defaultValue = DefaultValue::fromArray($parameterData['defaultValue'] ?? []);
 
         foreach ((array) ($parameterData['conditionalValues'] ?? []) as $key => $conditionalValueData) {

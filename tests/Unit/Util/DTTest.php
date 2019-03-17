@@ -47,6 +47,10 @@ class DTTest extends TestCase
     public function validFixedValues()
     {
         return [
+            'null' => ['0.000000', null],
+            'false' => ['0.000000', false],
+            'true' => ['0.000000', true],
+            'zero' => ['0.000000', 0],
             'seconds' => ['1234567890.000000', 1234567890],
             'milliseconds_1' => ['1234567890.000000', 1234567890000],
             'milliseconds_2' => ['1234567890.123000', 1234567890123],
@@ -70,6 +74,7 @@ class DTTest extends TestCase
     {
         return [
             ['foo'],
+            [new \stdClass()],
         ];
     }
 }

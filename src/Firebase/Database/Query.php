@@ -39,7 +39,7 @@ class Query
     private $filters;
 
     /**
-     * @var Sorter
+     * @var Sorter|null
      */
     private $sorter;
 

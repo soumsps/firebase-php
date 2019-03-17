@@ -26,7 +26,7 @@ use Psr\Http\Message\UriInterface;
 class Factory
 {
     /**
-     * @var UriInterface
+     * @var UriInterface|null
      */
     protected $databaseUri;
 
@@ -36,7 +36,7 @@ class Factory
     protected $defaultStorageBucket;
 
     /**
-     * @var ServiceAccount
+     * @var ServiceAccount|null
      */
     protected $serviceAccount;
 
@@ -56,7 +56,7 @@ class Factory
     protected $claims = [];
 
     /**
-     * @var \Psr\SimpleCache\CacheInterface
+     * @var \Psr\SimpleCache\CacheInterface|null
      */
     protected $verifierCache;
 
@@ -202,11 +202,9 @@ class Factory
         ]);
         $apiClient = new Auth\ApiClient($http);
 
-        $serviceAccount = $this->getServiceAccount();
-
         $customTokenGenerator = $this->createCustomTokenGenerator();
         $keyStore = new HttpKeyStore(new Client(), $this->verifierCache ?: new InMemoryCache());
-        $verifier = new Verifier($serviceAccount->getSanitizedProjectId(), $keyStore);
+        $verifier = new Verifier($this->getServiceAccount()->getSanitizedProjectId(), $keyStore);
 
         return new Auth($apiClient, $customTokenGenerator, $verifier);
     }

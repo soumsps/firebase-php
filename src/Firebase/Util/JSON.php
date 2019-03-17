@@ -27,7 +27,7 @@ class JSON
         $depth = $depth ?? 512;
 
         $json = \json_encode($value, $options, $depth);
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if ($json === false || json_last_error() !== JSON_ERROR_NONE) {
             throw new InvalidArgumentException(
                 'json_encode error: '.json_last_error_msg());
         }

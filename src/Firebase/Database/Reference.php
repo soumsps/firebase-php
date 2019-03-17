@@ -261,7 +261,7 @@ class Reference
      * @throws OutOfRangeException if the reference has no children with keys
      * @throws ApiException if the API reported an error
      *
-     * @return string[]
+     * @return string[]|int[]
      */
     public function getChildKeys(): array
     {
